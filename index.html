@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Simple Map</title>
+    </head>
+    <link rel="stylesheet" href="style.css">
+<body>
+    <div id="map"></div>
+
+    <script>
+        
+        function initMap() {
+            const locations = [
+        { name: "Mamburao", position: { lat: 13.2500, lng: 120.4000 } },
+        { name: "Quezon Sampaloc", position: { lat: 13.8255, lng: 121.1150 } },
+        { name: "Brgy Bilucao", position: { lat: 13.8251, lng: 121.0625 } },
+        { name: "Manila", position: { lat: 14.5995, lng: 120.9842 } },
+        { name: "Santa Cruz", position: { lat: 13.5572, lng: 120.7082 } }
+      ];
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 10,
+        center: locations[0].position,
+            });
+
+            locations.forEach(location => {
+        const marker = new google.maps.Marker({
+          position: location.position,
+          map: map,
+          title: location.name 
+        });
+            });
+        }
+    </script>
+
+    <script
+        async
+        defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpjZBcvrgBeDLsTQfAHpnpBztwC5YYPBA&callback=initMap"
+    ></script>
+</body>
+</html>
